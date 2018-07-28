@@ -23,7 +23,8 @@ for paper_bib_text in paper_bib_text_list:
     title = title_regexp.search(text).group(1)
     words = title.lower().split()
     for word in words:
-        if word not in skip_words:
+        word = re.sub(r'\W+', '', word)
+        if word and word not in skip_words:
             cnt[word] += 1
 
 d = list()
